@@ -1,9 +1,13 @@
 from math import fmod
 
+### State ###
+# This is the 'state' of the game, and there is only one of these objects in play at a time
+
+
 class State(object):
 
 	def __init__(self, screen):
-		self.screen = screen
+		self.screen = screen # the screen the game is playing on
 		self.screenSize = screen.get_size()
 		self.listOfThings = []
 
@@ -14,9 +18,9 @@ class State(object):
 	def removeThing(self, thing):
 		self.listOfThings.remove(thing)
 
-	def tick(self):
+	def tick(self): #make everything tick
 		for thing in self.listOfThings:
-			thing.tick()
+			thing.tick() 
 
 			# doughnut world!
 			if thing.position[0] > self.screenSize[0]:
@@ -31,11 +35,11 @@ class State(object):
 
 			thing.direction = fmod(thing.direction, 2 * 3.14159)
 
-	def draw(self):
+	def draw(self): #make everything draw
 		for thing in self.listOfThings:
 			thing.draw()
 
-	def think(self):
+	def think(self): #make everything think
 		for thing in self.listOfThings:
 			thing.think()
 		
