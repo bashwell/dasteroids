@@ -1,4 +1,5 @@
 import pygame
+import numpy
 from math import sin, cos
 
 drawWidth = 2
@@ -15,8 +16,7 @@ def rotatePoint(direction, point):
     return [x, y]
 
 def rotatePointsByThing(thing, points):
-    return map(lambda point: rotatePoint(thing.direction, point),
-               points)
+    return map(lambda point: rotatePoint(thing.direction, point), points)
 
 def thingToScreen(thing, points):
     return relativeToAbsolute(thing, rotatePointsByThing(thing, points))
@@ -28,7 +28,6 @@ def drawPolygon(thing, points):
     pygame.draw.polygon(thing.state.screen, drawColor, points, drawWidth)
 
 def drawCircle(thing, center, radius):
-    center[0] += thing.position[0]
-    center[1] += thing.position[1]
-
-    pygame.draw.circle(thing.state.screen, drawColor, [int(n) for n in center], radius, drawWidth)
+    #center[0] += thing.position[0]
+    #center[1] += thing.position[1]
+    pygame.draw.circle(thing.state.screen, drawColor, center.astype(int), radius, drawWidth)

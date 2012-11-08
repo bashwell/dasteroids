@@ -11,7 +11,7 @@ def main(argv):
     pygame.display.set_caption("Dasteroids")
 
     clock = pygame.time.Clock()
-    state = State(screen)
+    state = State(screen) #create the game state, give it the screen we just made
 
     done = False
 
@@ -26,7 +26,7 @@ def main(argv):
         screen.fill((0, 0, 0)) # Black background
 
         # Think
-        state.think()
+        state.think() 
 
         # Tick (Move, change state, etc)
         state.tick()

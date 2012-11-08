@@ -30,7 +30,8 @@ class Ship(Thing):
     def tick(self):
         if not self.fireTimer == 0:
             self.fireTimer -= 1
-
+        super(Ship, self).tick()
+       
     def draw(self):
         drawPolygon(self, [[-10, -10], [10, -10], [0, 5]])
 
@@ -59,7 +60,6 @@ class Ship(Thing):
             self.fireTimer = self.fireRate
             shot = Shot(self.state, self)
             self.state.addThing(shot)
-
     ## Predicates
 
     def canFire(self):
