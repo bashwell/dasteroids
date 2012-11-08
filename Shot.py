@@ -7,7 +7,7 @@ class Shot(Thing):
     def __init__(self, state, parent):
         super(Shot, self).__init__(state)
 
-        self.position = parent.position[:]# - don't need this last thing
+        self.position = parent.position[:]
         self.direction = parent.direction
         self.speed[0] = 10 * cos(parent.direction)
         self.speed[1] = 10 * sin(parent.direction)
