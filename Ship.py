@@ -1,4 +1,3 @@
-
 from Thing import Thing
 from Shot import Shot
 import warnings
@@ -16,7 +15,7 @@ class Ship(Thing):
         self.health = 100;
         self.turnSpeed = .2 # Rad/sec
         self.maxAcceleration = 2 # px/sec
-        self.fireRate = 10
+        self.fireRate = 100
         self.fireTimer = 0
 
     def think(self):

@@ -9,8 +9,8 @@ class Shot(Thing):
 
         self.position = parent.position[:]
         self.direction = parent.direction
-        self.speed[0] = 10 * cos(parent.direction)
-        self.speed[1] = 10 * sin(parent.direction)
+        self.speed[0] = 100 * cos(parent.direction)
+        self.speed[1] = 100 * sin(parent.direction)
         self.lifeClock = 0;
 
     def collision(self, thing):
