@@ -1,4 +1,3 @@
-
 from Thing import Thing
 from Shot import Shot
 import warnings
@@ -16,7 +15,7 @@ class Ship(Thing):
         self.health = 100;
         self.turnSpeed = .2 # Rad/sec
         self.maxAcceleration = 2 # px/sec
-        self.fireRate = 10
+        self.fireRate = 100
         self.fireTimer = 0
 
     def think(self):
@@ -30,7 +29,8 @@ class Ship(Thing):
     def tick(self):
         if not self.fireTimer == 0:
             self.fireTimer -= 1
-
+        super(Ship, self).tick()
+       
     def draw(self):
         drawPolygon(self, [[-10, -10], [10, -10], [0, 5]])
 
@@ -59,7 +59,6 @@ class Ship(Thing):
             self.fireTimer = self.fireRate
             shot = Shot(self.state, self)
             self.state.addThing(shot)
-
     ## Predicates
 
     def canFire(self):
