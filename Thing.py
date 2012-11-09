@@ -24,5 +24,8 @@ class Thing(object):
         
     def draw(self, surface):
         #I don't think this ever gets called - BAA
+        # It's just a prototype so that subclasses don't need to implement it, like
+        # the other think/tick/etc functions.  Maybe it would be better to have each
+        # object *need* to implement this one.
         "Each thing should look different"
         pass
