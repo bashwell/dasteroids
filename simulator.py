@@ -1,5 +1,6 @@
 import pygame
 from State import State
+import numpy as np
 # Remove after testing
 from Ship import Ship
 
@@ -44,8 +45,11 @@ def main(argv):
 
 
 def testInit(state):
-    ship1 = Ship(state, position=[100, 200])
-    ship2 = Ship(state, position=[500, 300])
+    # All arrays have to be numpy arrays. Wonky things happen when they're
+    # mixed with regular python arrays, apparently.
+
+    ship1 = Ship(state, position=np.array([100., 200.]))
+    ship2 = Ship(state, position=np.array([500., 300.]))
     map(state.addThing, [ship1, ship2])
 
 main([])

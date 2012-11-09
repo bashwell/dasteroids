@@ -18,9 +18,7 @@ class Thing(object):
         "Hit a thing, what now?"
 
     def tick(self):
-        #self.position[0] += self.speed[0]
-        #self.position[1] += self.speed[1]
-        self.position+=self.speed #using numpy vectors instead
+        self.position += self.speed #using numpy vectors instead
         
     def draw(self, surface):
         #I don't think this ever gets called - BAA
