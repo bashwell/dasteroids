@@ -10,7 +10,7 @@ class Thing(object):
         self.speed = np.zeros(2)
         self.position = np.zeros(2)
         self.direction = 0
-
+        self.ID=self.state.maxIDNumber
     def think(self):
         pass
 
