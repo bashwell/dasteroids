@@ -7,10 +7,10 @@ class Shot(Thing):
     def __init__(self, state, parent):
         super(Shot, self).__init__(state)
 
-        self.position = parent.position[:]
+        self.position = parent.position.copy()
         self.direction = parent.direction
-        self.speed[0] = 100 * cos(parent.direction)
-        self.speed[1] = 100 * sin(parent.direction)
+        self.speed[0] = 10 * cos(parent.direction)
+        self.speed[1] = 10 * sin(parent.direction)
         self.lifeClock = 0;
 
     def collision(self, thing):
