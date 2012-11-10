@@ -15,7 +15,7 @@ class Ship(Thing):
         self.health = 100;
         self.turnSpeed = .2 # Rad/sec
         self.maxAcceleration = 2 # px/sec
-        self.fireRate = 10
+        self.fireRate = 1000
         self.fireTimer = 0
 
 
@@ -26,6 +26,8 @@ class Ship(Thing):
 
         self.turn(self.turnSpeed)
         self.accelerate(0.5 * self.maxAcceleration)
+        if (self.ID == 0):
+            print self.absDistance(self.state.listOfThings[1])
 
     def tick(self):
         if not self.fireTimer == 0:

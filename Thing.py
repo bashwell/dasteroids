@@ -2,6 +2,7 @@
 #All tangible 'things' (ships, shots, etc.) are subclasses of Thing
 
 import numpy as np 
+from math import atan
 class Thing(object):
 
     def __init__(self, state):
@@ -10,7 +11,6 @@ class Thing(object):
         self.speed = np.zeros(2)
         self.position = np.zeros(2)
         self.direction = 0
-        self.ID=self.state.maxIDNumber
     def think(self):
         pass
 
@@ -28,12 +28,19 @@ class Thing(object):
         "Each thing should look different"
         pass
 
-    def donutDistance(self, target): #shortest distance to target in donut math
-        flatVector=self.position-target.position
-        distanceFlat=np.sqrt(flatVector.dot(flatVector))
+    def donutVector(self, target):  #returns the shortest vector to the target
+        flatXDist=self.position[0]-target.position[0]
+        flatYDist=self.position[1]-target.position[1]
         
-        transposedPosition=[target.position[0]-self.state.screenSize[0], target.position[1]-self.state.screenSize[1]]
-        donutVector=self.position-transposedPosition
-        distanceDonut=np.sqrt(donutVector.dot(donutVector))
+        donutXDist=self.position[0]-(target.position[0]+self.state.screenSize[0])
+        donutYDist=self.position[1]-(target.position[1]+self.state.screenSize[1])
+
+        return np.array([min(abs(flatXDist),abs(donutXDist)),min(abs(flatYDist),abs(donutYDist))])
+
+    def donutHeading(self, target): #returns the heading to target in radians, -pi to pi
+        headingVector = self.donutVector(target)
+        return atan(headingVector[0]/headingVector[1])
         
-        return min(distanceFlat, distanceDonut)
+    def absDistance(self, target):
+        headingVector=self.donutVector(target)
+        return np.sqrt(headingVector.dot(headingVector))     

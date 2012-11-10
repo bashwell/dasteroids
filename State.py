@@ -14,7 +14,9 @@ class State(object):
 
     def addThing(self, thing):
         self.listOfThings.append(thing)
+        thing.ID=self.maxIDNumber
         self.maxIDNumber+=1
+        
     def removeThing(self, thing):
         self.listOfThings.remove(thing)
 
