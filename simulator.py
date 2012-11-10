@@ -49,7 +49,7 @@ def testInit(state):
     # mixed with regular python arrays, apparently.
 
     ship1 = Ship(state, position=np.array([100., 200.]))
-    ship2 = Ship(state, position=np.array([500., 300.]))
+    ship2 = Ship(state, position=np.array([200., 300.]))
     map(state.addThing, [ship1, ship2])
 
 main([])

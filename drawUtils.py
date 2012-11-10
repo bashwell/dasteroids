@@ -4,6 +4,7 @@ from math import sin, cos
 
 drawWidth = 2
 drawColor = [255, 255, 255] # white
+drawColorRed = [255, 0, 0] # white
 
 def relativeToAbsolute(thing, points):
     return map(lambda point: (thing.position[0] + point[0], thing.position[1] + point[1]), points)
@@ -30,3 +31,6 @@ def drawPolygon(thing, points):
 def drawCircle(thing, center, radius):
 
     pygame.draw.circle(thing.state.screen, drawColor, center.astype(int), radius, drawWidth)
+
+def drawLine(thing, start, end, direction):
+    pygame.draw.line(thing.state.screen, drawColorRed, start, rotatePoint(direction, end))

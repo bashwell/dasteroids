@@ -1,7 +1,7 @@
 from Thing import Thing
 from Shot import Shot
 import warnings
-from drawUtils import drawPolygon
+from drawUtils import drawPolygon, drawLine
 from math import cos, sin
 
 class Ship(Thing):
@@ -26,8 +26,7 @@ class Ship(Thing):
 
         self.turn(self.turnSpeed)
         self.accelerate(0.5 * self.maxAcceleration)
-        if (self.ID == 0):
-            print self.absDistance(self.state.listOfThings[1])
+       
 
     def tick(self):
         if not self.fireTimer == 0:
@@ -37,7 +36,10 @@ class Ship(Thing):
 
     def draw(self):
         drawPolygon(self, [[-10, -10], [10, -10], [0, 15]])
-
+        if (self.ID == 0):
+            drawLine(self, self.position, self.position+1, self.donutHeading(self.state.listOfThings[1]))
+        if (self.ID == 1):
+            drawLine(self, self.position, self.position+1, self.donutHeading(self.state.listOfThings[0]))
 
     def collision(self, other):
         "I have hit a thing, how does that affect me?"
