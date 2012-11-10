@@ -27,3 +27,13 @@ class Thing(object):
         # object *need* to implement this one.
         "Each thing should look different"
         pass
+
+    def donutDistance(self, target): #shortest distance to target in donut math
+        flatVector=self.position-target.position
+        distanceFlat=np.sqrt(flatVector.dot(flatVector))
+        
+        transposedPosition=[target.position[0]-self.state.screenSize[0], target.position[1]-self.state.screenSize[1]]
+        donutVector=self.position-transposedPosition
+        distanceDonut=np.sqrt(donutVector.dot(donutVector))
+        
+        return min(distanceFlat, distanceDonut)

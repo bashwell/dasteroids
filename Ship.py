@@ -18,6 +18,7 @@ class Ship(Thing):
         self.fireRate = 10
         self.fireTimer = 0
 
+
     def think(self):
         "Brain goes here"
         if self.canFire():
@@ -31,8 +32,10 @@ class Ship(Thing):
             self.fireTimer -= 1
         super(Ship, self).tick()
        
+
     def draw(self):
         drawPolygon(self, [[-10, -10], [10, -10], [0, 15]])
+
 
     def collision(self, other):
         "I have hit a thing, how does that affect me?"
@@ -47,6 +50,7 @@ class Ship(Thing):
         else:
             warnings.warn("Ship cannot accelerate that fast", Warning)
 
+
     def turn(self, delTheta):
         "Turns ship by a change of delTheta, if it's able"
         if abs(delTheta) <= self.turnSpeed:
@@ -54,12 +58,14 @@ class Ship(Thing):
         else:
             warnings.warn("Ship cannot turn that fast", Warning)
 
+
     def fire(self):
         if self.canFire():
             self.fireTimer = self.fireRate
             shot = Shot(self.state, self)
             self.state.addThing(shot)
     ## Predicates
+
 
     def canFire(self):
         return self.fireTimer == 0
