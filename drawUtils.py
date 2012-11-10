@@ -33,4 +33,5 @@ def drawCircle(thing, center, radius):
     pygame.draw.circle(thing.state.screen, drawColor, center.astype(int), radius, drawWidth)
 
 def drawLine(thing, start, end, direction):
+    print rotatePoint(direction, end)
     pygame.draw.line(thing.state.screen, drawColorRed, start, rotatePoint(direction, end))

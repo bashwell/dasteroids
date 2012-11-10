@@ -33,17 +33,21 @@ class Thing(object):
         
         donutXDist = self.position[0]-(target.position[0]+self.state.screenSize[0])
         donutYDist = self.position[1]-(target.position[1]+self.state.screenSize[1])
-      #   
-#         if ( abs(flatXDist) < abs(donutXDist) ):
-#             shortestX = flatXDist
-#         else:
-#             shortestX=donutXDist   
-#         if ( abs(flatYDist) < abs(donutYDist) ):
-#             shortestY = flatYDist
-#         else:
-#             shortestY=donutYDist   
-#         return np.array( [shortestX, shortestY] )    
-        return np.array([ min(abs(flatXDist), abs(donutXDist)), min(abs(flatYDist), abs(donutYDist)) ])
+         
+        if ( abs(flatXDist) < abs(donutXDist) ):
+            shortestX = flatXDist
+            print "Flat X"
+        else:
+            shortestX=donutXDist   
+            print "Donut X"
+        if ( abs(flatYDist) < abs(donutYDist) ):
+            shortestY = flatYDist
+            print "Flat Y"
+        else:
+            print "Donut Y"
+            shortestY=donutYDist   
+        return np.array( [shortestX, shortestY] )    
+        #return np.array([ min(abs(flatXDist), abs(donutXDist)), min(abs(flatYDist), abs(donutYDist)) ])
 
 
     def donutHeading(self, target): #returns the heading to target in radians, -pi to pi

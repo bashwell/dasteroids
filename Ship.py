@@ -37,9 +37,9 @@ class Ship(Thing):
     def draw(self):
         drawPolygon(self, [[-10, -10], [10, -10], [0, 15]])
         if (self.ID == 0):
-            drawLine(self, self.position, self.position+1, self.donutHeading(self.state.listOfThings[1]))
+            drawLine(self, self.position, [self.position[0], self.position[1]], self.donutHeading(self.state.listOfThings[1]))
         if (self.ID == 1):
-            drawLine(self, self.position, self.position+1, self.donutHeading(self.state.listOfThings[0]))
+            drawLine(self, [0,0], [100,0], self.donutHeading(self.state.listOfThings[0]))
 
     def collision(self, other):
         "I have hit a thing, how does that affect me?"
