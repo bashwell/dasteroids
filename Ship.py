@@ -15,7 +15,7 @@ class Ship(Thing):
         self.health = 100;
         self.turnSpeed = .2 # Rad/sec
         self.maxAcceleration = 2 # px/sec
-        self.fireRate = 100
+        self.fireRate = 10
         self.fireTimer = 0
 
     def think(self):
@@ -32,7 +32,7 @@ class Ship(Thing):
         super(Ship, self).tick()
        
     def draw(self):
-        drawPolygon(self, [[-10, -10], [10, -10], [0, 5]])
+        drawPolygon(self, [[-10, -10], [10, -10], [0, 15]])
 
     def collision(self, other):
         "I have hit a thing, how does that affect me?"
