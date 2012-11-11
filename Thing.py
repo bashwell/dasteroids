@@ -2,7 +2,7 @@
 #All tangible 'things' (ships, shots, etc.) are subclasses of Thing
 
 import numpy as np 
-from math import atan, pi
+from math import atan2, pi
 class Thing(object):
 
     def __init__(self, state):
@@ -36,23 +36,18 @@ class Thing(object):
          
         if ( abs(flatXDist) < abs(donutXDist) ):
             shortestX = flatXDist
-            print "Flat X"
         else:
             shortestX=donutXDist   
-            print "Donut X"
         if ( abs(flatYDist) < abs(donutYDist) ):
             shortestY = flatYDist
-            print "Flat Y"
         else:
-            print "Donut Y"
             shortestY=donutYDist   
         return np.array( [shortestX, shortestY] )    
         #return np.array([ min(abs(flatXDist), abs(donutXDist)), min(abs(flatYDist), abs(donutYDist)) ])
 
-
     def donutHeading(self, target): #returns the heading to target in radians, -pi to pi
         headingVector = self.donutVector(target)
-        return atan(headingVector[0]/headingVector[1])
+        return atan2(headingVector[1],headingVector[0])
         
         
     def absDistance(self, target):

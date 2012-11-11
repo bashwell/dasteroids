@@ -1,5 +1,5 @@
 import pygame
-import numpy
+import numpy as np
 from math import sin, cos
 
 drawWidth = 2
@@ -32,6 +32,8 @@ def drawCircle(thing, center, radius):
 
     pygame.draw.circle(thing.state.screen, drawColor, center.astype(int), radius, drawWidth)
 
-def drawLine(thing, start, end, direction):
-    print rotatePoint(direction, end)
-    pygame.draw.line(thing.state.screen, drawColorRed, start, rotatePoint(direction, end))
+def drawHeading(thing, direction):
+    trajVectorInit=[-100,0]
+    
+    trajVector=[rotatePoint(direction, trajVectorInit)[0]+thing.position[0], rotatePoint(direction, trajVectorInit)[1]+thing.position[1]]
+    pygame.draw.line(thing.state.screen, drawColorRed, thing.position, trajVector)

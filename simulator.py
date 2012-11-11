@@ -5,7 +5,7 @@ import numpy as np
 from Ship import Ship
 
 size = [800, 600]
-
+#size = [1280, 800]
 def main(argv):
     pygame.init()
     screen = pygame.display.set_mode(size)
@@ -49,7 +49,7 @@ def testInit(state):
     # mixed with regular python arrays, apparently.
 
     ship1 = Ship(state, position=np.array([100., 200.]))
-    ship2 = Ship(state, position=np.array([200., 300.]))
+    ship2 = Ship(state, position=np.array([200., 100.]))
     map(state.addThing, [ship1, ship2])
 
 main([])
