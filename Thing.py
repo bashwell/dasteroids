@@ -31,20 +31,23 @@ class Thing(object):
         flatXDist = self.position[0]-target.position[0]
         flatYDist = self.position[1]-target.position[1]
         
-        donutXDist = self.position[0]-(target.position[0]+self.state.screenSize[0])
-        donutYDist = self.position[1]-(target.position[1]+self.state.screenSize[1])
-         
-        if ( abs(flatXDist) < abs(donutXDist) ):
-            shortestX = flatXDist
+        if (abs(flatXDist) < 0.5*self.state.screenSize[0]): #it's shorter in the flat dimension
+            shortestX=flatXDist
+        elif (flatXDist > 0):
+            shortestX= flatXDist-self.state.screenSize[0]  
         else:
-            shortestX=donutXDist   
-        if ( abs(flatYDist) < abs(donutYDist) ):
-            shortestY = flatYDist
+            shortestX= flatXDist+self.state.screenSize[0]  
+        
+        if (abs(flatYDist) < 0.5*self.state.screenSize[1]): #it's shorter in the flat dimension
+            shortestY=flatYDist
+        elif (flatYDist > 0):
+            shortestY= flatYDist-self.state.screenSize[1]  
         else:
-            shortestY=donutYDist   
+            shortestY= flatYDist+self.state.screenSize[1]  
+       
+      
         return np.array( [shortestX, shortestY] )    
-        #return np.array([ min(abs(flatXDist), abs(donutXDist)), min(abs(flatYDist), abs(donutYDist)) ])
-
+      
     def donutHeading(self, target): #returns the heading to target in radians, -pi to pi
         headingVector = self.donutVector(target)
         return atan2(headingVector[1],headingVector[0])

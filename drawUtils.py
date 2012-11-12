@@ -33,7 +33,7 @@ def drawCircle(thing, center, radius):
     pygame.draw.circle(thing.state.screen, drawColor, center.astype(int), radius, drawWidth)
 
 def drawHeading(thing, direction):
-    trajVectorInit=[-100,0]
+    trajVectorInit=[-300,0]
     
     trajVector=[rotatePoint(direction, trajVectorInit)[0]+thing.position[0], rotatePoint(direction, trajVectorInit)[1]+thing.position[1]]
     pygame.draw.line(thing.state.screen, drawColorRed, thing.position, trajVector)
